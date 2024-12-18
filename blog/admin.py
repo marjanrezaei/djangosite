@@ -10,7 +10,7 @@ class PostAdmin(admin.ModelAdmin):
     # fields = ('title',)
     # exclude = ('title',)
     list_filter = ('status',)
-    ordering = ('-published_date',)
+    # ordering = ('-published_date',)
     search_fields = ('title', 'content')
 
 
