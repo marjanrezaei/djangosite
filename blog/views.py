@@ -7,8 +7,9 @@ def index(request):
     context = {'posts' : posts}
     return render(request, 'blog\\blog-home.html', context) 
 
-def single(request):
-    context = {'title':'its a title from marjan', 'content':'i try to write a new pasage for example its very fantastic that i can.', 'author':'Marjan Rezayi'}
+def single(request, pid):
+    post = get_object_or_404(Post, pk=pid)
+    context = {'post' : post,}
     return render(request, 'blog\\blog-single.html', context)
 
 
