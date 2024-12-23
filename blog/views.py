@@ -8,7 +8,7 @@ def index(request):
     return render(request, 'blog\\blog-home.html', context) 
 
 def single(request, pid):
-    post = get_object_or_404(Post, pk=pid)
+    post = get_object_or_404(Post, pk=pid, status=1)
     context = {'post' : post,}
     return render(request, 'blog\\blog-single.html', context)
 
