@@ -10,7 +10,7 @@
     <p> testing page</p>
     <h1>posts: {% showposts as allposts %}</h1>
     {% for post in allposts %}
-       <p>{{post}}</p> 
+       <p>{{post.content|snippet:20}}</p> 
     {% endfor %}
     
 

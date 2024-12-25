@@ -12,3 +12,7 @@ register = template.Library()
 def test_show():
     posts = Post.objects.filter(status=1)
     return posts
+
+@register.filter
+def snippet(value,arg=10):
+    return value[:arg] + '...'
