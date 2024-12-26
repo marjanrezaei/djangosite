@@ -16,5 +16,16 @@ def single(request, pid):
     context = {'post' : post,}
     return render(request, 'blog\\blog-single.html', context)
 
+def search(request):    
+    posts = Post.objects.filter(status=1)
+    # print(request.__dict__)
+    if request.method == 'GET':
+        #  print(request.GET.get('s'))
+        if s := request.GET.get('s'):
+            posts = posts.filter(content__contains=s)
+    context = {'posts' : posts}
+    return render(request, 'blog\\blog-home.html', context) 
+
+
 def test(request):
     return render(request, 'test.html')

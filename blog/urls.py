@@ -7,5 +7,6 @@ urlpatterns = [
     path('<int:pid>', single, name = 'single'),
     path('category/<str:cat_name>', index, name = 'category'),
     path('author/<str:author_username>', index, name = 'author'),
+    path('search/', search, name = 'search'),
     path('test', test, name='test'),
 ]
