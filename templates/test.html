@@ -1,21 +1,29 @@
-{% load blog_tags %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form tet</title>
 </head>
+
 <body>
 
- <p> testing page</p>
-<!-- <h1>posts: {% showposts as allposts %}</h1>
-     {% for post in allposts %}
-       <p>{{post.content|snippet:20}}</p> 
-     {% endfor %}
--->
 
-   {% popularposts %}
+  <form action="{% url 'website:test' %}" method="post">
+    {% csrf_token %}
+    <label> name:</label>
+    <input name="name" type="text"><br>
+    <label> subject:</label>
+    <input name="subject" type="text"><br>
+    <label> email :</label>
+    <input name="email" type="email"><br>
+    <label> message:</label>
+    <input name="message" type="text"><br>
+
+    <button type="submit">submit</button>
+  </form>
 
 </body>
+
 </html>
