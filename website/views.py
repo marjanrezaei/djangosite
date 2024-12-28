@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
 from website.models import Contact
+from website.forms import NameForm
 
 def index(request):
     return render(request, 'website\index.html') 
@@ -15,15 +16,17 @@ def contact(request):
 
 def test_view(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
-        subject = request.POST.get('subject')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
-        c = Contact()
-        c.name = name
-        c.subject = subject
-        c.email = email
-        c.message = message
-        c.save()    
+        form = NameForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            subject = form.cleaned_data['subject']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+            print(name, subject, email, message)
+            return HttpResponse('valid')
+        else:
+            return HttpResponse('not valid')
+
+    form = NameForm()   
     
-    return render(request, 'test.html')
+    return render(request, 'test.html', {'form': form})
