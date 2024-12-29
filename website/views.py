@@ -26,8 +26,6 @@ def newsletter_view(request):
             return HttpResponseRedirect('/')
         else:
             return HttpResponseRedirect('/')
-    form = NewsLetterForm() 
-    return render(request, 'website\contact.html', {'form': form})
 
 
 def test_view(request):
