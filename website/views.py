@@ -10,7 +10,12 @@ def about(request):
 
 
 def contact(request):
-    return render(request, 'website\contact.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+    form = ContactForm() 
+    return render(request, 'website\contact.html', {'form': form})
 
 
 
