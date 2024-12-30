@@ -21,8 +21,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from website.sitemaps import StaticViewSitemap
+from blog.sitemaps import BlogSitemap
+
 sitemaps = {
     "static": StaticViewSitemap,
+    "blog" : BlogSitemap
 }
 
 urlpatterns = [
