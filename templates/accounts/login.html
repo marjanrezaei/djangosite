@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <p>{{msg}}</p>
+    {% if request.user.is_authenticated %}
+    <p>User is authenticated as {{request.user.username}}</p>
+    {% else %}
+    <p>User is not authenticated</p>
+    {% endif %}
 </body>
 </html>
