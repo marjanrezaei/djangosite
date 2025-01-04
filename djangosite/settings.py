@@ -38,8 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'website.apps.WebsiteConfig',
-    'blog.apps.BlogConfig',
     'django.contrib.humanize',
     'django.contrib.sites',
     'django.contrib.sitemaps',
@@ -47,7 +45,11 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'taggit',
     'django_summernote',
-    'captcha',
+    'captcha',  
+    'website.apps.WebsiteConfig',
+    'blog.apps.BlogConfig',
+    'accounts.apps.AccountsConfig',
+    
 ]
 
 # site framework
