@@ -3,6 +3,8 @@ from blog.models import Post, Comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from blog.forms import CommentForm
 from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 # from django.contrib.auth.decorators import login_required
 
 # @login_required  # if login_required
@@ -36,12 +38,15 @@ def single(request, pid):
             messages.add_message(request, messages.SUCCESS, 'your comment submitted successfully')
         else:
             messages.add_message(request, messages.ERROR, 'your comment didnt submitted')
-            
+       
     post = get_object_or_404(Post, pk=pid, status=1)
-    comments = Comment.objects.filter(post=post.id, approved=True)
-    form = CommentForm()
-    context = {'post' : post, 'comments' : comments, 'form' : form}
-    return render(request, 'blog\\blog-single.html', context)
+    if not post.login_require: 
+        comments = Comment.objects.filter(post=post.id, approved=True)
+        form = CommentForm()
+        context = {'post' : post, 'comments' : comments, 'form' : form}
+        return render(request, 'blog\\blog-single.html', context)
+    else:
+        return HttpResponseRedirect(reverse('accounts:login'))
 
 def search(request):    
     posts = Post.objects.filter(status=1)

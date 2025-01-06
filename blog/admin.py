@@ -6,7 +6,7 @@ from django_summernote.admin import SummernoteModelAdmin
 # @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
     date_hierarchy = 'created_date'
-    list_display =('title', 'author', 'status', 'published_date', 'content_view')
+    list_display =('title', 'author', 'status', 'login_require', 'published_date', 'content_view')
     empty_value_dispaly = '-empty-'
     # fields = ('title',)
     # exclude = ('title',)
