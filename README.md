@@ -1,2 +1,2 @@
 # djangosite
- its a site based on django
+ its a site render based on django
